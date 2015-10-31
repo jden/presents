@@ -4,7 +4,9 @@
   "description": "test rapplication using radar",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard",
+    "start": "pushd node_modules/radar && npm start & popd && beefy index.js -o"
+
   },
   "author": "",
   "license": "UNLICENSED",
