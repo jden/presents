@@ -30,7 +30,7 @@ boxes.forEach(function (box, i) {
 
 
 var clients = {}
-
+global.clients = clients
 function handleMessage (message) {
 	console.log('message', message)
 	switch (message.op) {
@@ -51,12 +51,17 @@ function onclientOnline (message) {
 		clients[clientId] = String(clientId)
 		console.log('subscribing to clients/' + clientId)
 		RadarClient.status('clients/' + clientId).on(function (x) {
-			console.log('sync', x)
-			clients[clientId] = x.value
+			console.log('sync', x, clients)
+			clients[x.key] = x.value
+			console.log(clients)
 		}).sync()
 	} else {
 		console.log('client online', clients[clientId])
 	}
+
+	console.log('client online', message)
+	var box = message.to.slice(19)
+	document.querySelector('.' + box).innerText = clients[message.value.userId]
 }
 
 document.querySelector('.name').addEventListener('change', function (e) {
