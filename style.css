@@ -1,0 +1,21 @@
+body {
+	background: #464040;
+	color: #ffe;
+	font-family: helvetica, sans-serif;
+}
+
+.box{
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	background-color: #222;
+	margin: 2em;
+}
+
+.box:hover{
+	outline: 2px solid #aaf;
+}
+
+.box.present{
+	outline: 2px solid #33c;
+}
